@@ -96,18 +96,14 @@ ListNode* MergeTwoSortedList(ListNode* firstList, ListNode* secondList)
         newCurrent = newCurrent->next;
     }
 
-    while (firstList != nullptr)
+    if (firstList != nullptr)
     {
         newCurrent->next = firstList;
-        newCurrent = newCurrent->next;
-        firstList = firstList->next;
     }
 
-    while (secondList != nullptr)
+    if (secondList != nullptr)
     {
         newCurrent->next = secondList;
-        newCurrent = newCurrent->next;
-        secondList = secondList->next;
     }
 
     return newHead;
