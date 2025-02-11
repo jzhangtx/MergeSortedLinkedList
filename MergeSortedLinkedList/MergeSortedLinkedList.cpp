@@ -40,18 +40,20 @@ ListNode* GetListFromInput(ListNode** ppHead, int count)
     return pTail;
 }
 
-void PrintList(ListNode* pHead)
+std::ostream& operator <<(std::ostream& st, ListNode* pNode)
 {
-    std::cout << pHead->data;
-    pHead = pHead->next;
+    if (pNode == nullptr)
+        return st;
 
-    while (pHead != nullptr)
+    st << pNode->data;
+    if (pNode->next == nullptr)
+        st << std::endl;
+    else
     {
-        std::cout << ", " << pHead->data;
-        pHead = pHead->next;
+        st << ", " << pNode->next;
     }
 
-    std::cout << std::endl;
+    return st;
 }
 
 void FreeList(ListNode* pNode)
@@ -126,7 +128,7 @@ int main()
         ListNode* pMerged = MergeTwoSortedList(pAHead, pBHead);
 
         std::cout << "Merged: ";
-        PrintList(pMerged);
+        std::cout << pMerged;
         FreeList(pMerged);
     }
 }
